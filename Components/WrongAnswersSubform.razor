@@ -1,0 +1,78 @@
+﻿@using System.Linq.Expressions
+@using Microsoft.AspNetCore.Components.Forms
+
+@inherits InputBase<List<string>>
+
+<div class="form-control-wrapper">
+    @if (!string.IsNullOrWhiteSpace(Label))
+    {
+        <label class="form-control-label" for="@Id">@Label</label>
+    }
+
+    @foreach (var item in CurrentValue ?? Enumerable.Empty<string>())
+    {
+        <div class="d-flex align-items-center mb-2">
+            <span class="me-2">@item</span>
+            <button type="button" class="btn btn-danger btn-sm" @onclick="() => RemoveItem(item)">Remove</button>
+        </div>
+    }
+
+    <div class="d-flex">
+        <input class="form-control me-2 @CssClass" id="@Id" @bind="newItem" placeholder="Add new item" />
+        <button type="button" class="btn btn-primary" @onclick="AddItem">Add</button>
+    </div>
+    <div class="form-control-validation">
+        <ValidationMessage For="@ValidationFor" />
+    </div>
+</div>
+
+@code {
+    private string? newItem;
+    
+    [Parameter, EditorRequired]
+    public Expression<Func<List<string>>> ValidationFor { get; set; } = default!;
+
+    [Parameter]
+    public string? Id { get; set; }
+
+    [Parameter]
+    public string? Label { get; set; }
+    protected override void OnInitialized()
+    {
+        
+    }
+
+    protected override bool TryParseValueFromString(string? value, out List<string> result, out string validationErrorMessage)
+    {
+        // Parsing is not necessary here as we're dealing with a list of strings
+        if(CurrentValue.Count >= 3)
+        {
+            result = CurrentValue;
+            validationErrorMessage = "Maximum number of wrong numbers is 3";
+            return false;
+        }
+        result = CurrentValue;
+        validationErrorMessage = string.Empty;
+        return true;
+    }
+
+    private void AddItem()
+    {
+        if (!string.IsNullOrWhiteSpace(newItem))
+        {
+            CurrentValue ??= new List<string>();
+            CurrentValue.Add(newItem);
+            newItem = string.Empty;
+            EditContext?.NotifyFieldChanged(FieldIdentifier);
+        }
+    }
+
+    private void RemoveItem(string item)
+    {
+        if (CurrentValue?.Contains(item) == true)
+        {
+            CurrentValue.Remove(item);
+            EditContext?.NotifyFieldChanged(FieldIdentifier);
+        }
+    }
+}

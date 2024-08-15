@@ -1,0 +1,71 @@
+﻿@page "/question/{id:int}"
+@inject QuestionsClient QuestionsClient
+@rendermode InteractiveServer
+@if(question is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <h2 class="text-center" >@question.Name</h2>
+    <div class="mx-auto p-2 border border-dark border-3 rounded" style="width: 66%;" >
+        <div class="border border-dark border-3 rounded mb-3 text-center" style="width: 100%">
+            <p>@question.Prompt</p>
+        </div>
+        <div class="d-grid gap-2">
+            @if(answers is not null)
+            {
+                
+                @foreach(string answer in answers)
+                {
+                    <button class="btn btn-outline-primary" type="button">@answer</button>
+                }
+            }
+        </div>
+        
+    </div>
+}
+
+@code {
+    [Parameter]
+    public int? id {get; set;}
+    private QuestionDetails? question;
+    private List<string>? answers;
+    private List<string> Shuffle(List<string> list)
+    {
+        Random r = new Random();
+        List<string> newList = new List<string>(list);
+        int count = list.Count();
+        for(int i = count - 1; i > 0; i-- )
+        {
+            int j = r.Next(list.Count);
+        	string temp = newList[i];
+            newList[i] = newList[j];
+            newList[j] = temp;
+        }
+        return newList;
+    }
+    protected override void OnParametersSet()
+    {
+        if(id is not null)
+        {
+            question = QuestionsClient.GetQuestion(id.Value);
+
+        }
+        if(question is not null)
+        {
+            if(question.WrongAnswers is not null)
+            {
+                answers = new List<string>{question.Answer};
+                answers.AddRange(question.WrongAnswers ?? new List<string>());
+                answers = Shuffle(answers);
+            }
+            
+        }
+        
+    }
+
+   
+}   
+    
+    

@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\TeachingSite\\TeachingSite.Frontend\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TeachingSite.Frontend.bundle.scp.css",
+      "PackagePath": "staticwebassets\\TeachingSite.Frontend.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\TeachingSite\\TeachingSite.Frontend\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TeachingSite.Frontend.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.TeachingSite.Frontend.props",
+      "PackagePath": "build\\TeachingSite.Frontend.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.TeachingSite.Frontend.props",
+      "PackagePath": "buildMultiTargeting\\TeachingSite.Frontend.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.TeachingSite.Frontend.props",
+      "PackagePath": "buildTransitive\\TeachingSite.Frontend.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

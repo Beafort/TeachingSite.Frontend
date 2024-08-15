@@ -1,0 +1,37 @@
+﻿<div class="modal fade" id="@GetModalId(question)" tabindex="-1" aria-labelledby="@GetTitleId(question)" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="@GetTitleId(question)">@title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+@code{
+    [Parameter]
+    public QuestionSummary? question {get; set;}
+    private string title = string.Empty;
+
+    protected override void OnParametersSet()
+    {
+        title = $"Delete {question?.Name}?";
+    }
+
+    public static string GetModalId(QuestionSummary? question)
+    {
+        ArgumentNullException.ThrowIfNull(question);
+        return $"deleteModal-{question.Id}";
+    }
+
+    public static string GetTitleId(QuestionSummary? question)
+    {
+        ArgumentNullException.ThrowIfNull(question);
+        return $"modalTitle-{question.Id}";
+    }
+}

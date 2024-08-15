@@ -1,0 +1,62 @@
+﻿@page "/"
+@inject QuestionsClient Client
+<PageTitle>Home</PageTitle>
+
+@if(questions is null){
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-light table-striped table-bordered table-hover mt-3">
+        <thead class= "table-primary">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Prompt</th>
+            <th>Subject</th>
+            <th>Answer</th>
+            <th>Wrong Answers</th>
+            <th></th>
+        </thead>
+        <tbody>
+            @foreach (var question in questions){
+                <tr>
+                    <td>@question.Id</td>
+                    <td>@question.Name</td>
+                    <td>@question.Prompt</td>
+                    <td>@question.Subject</td>
+                    <td>@question.Answer</td>
+                    <td>@String.Join(", ", question.WrongAnswers ?? Enumerable.Empty<string>())</td>
+                    <td>
+                        <div class="d-flex">
+                            <a class="btn btn-primary me-2" role = "button" href= "/edit/@question.Id" >
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <button class ="btn btn-danger me-2" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="@GetDeleteModalId(question)">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                            <a class="btn btn-primary" role = "button" href= "/question/@question.Id" >
+                                <i class="bi bi-arrow-return-right"></i>
+                            </a>
+                            <DeleteQuestion question="@question"/>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code{
+    
+    private QuestionSummary[]? questions;
+    protected override void OnInitialized()
+    {
+        questions = Client.GetQuestions();
+    }
+    private string GetDeleteModalId(QuestionSummary question)
+    {
+        return $"#{DeleteQuestion.GetModalId(question)}";
+    }
+}
