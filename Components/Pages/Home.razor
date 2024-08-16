@@ -31,15 +31,14 @@ else
                             <a class="btn btn-primary me-2" role = "button" href= "/edit/@question.Id" >
                                 <i class="bi bi-pencil-square"></i>
                             </a>
-                            <button class ="btn btn-danger me-2" 
-                                    data-bs-toggle="modal" 
-                                    data-bs-target="@GetDeleteModalId(question)">
-                                <i class="bi bi-trash"></i>
-                            </button>
+                            <Modal @ref="modal"/>
+                            <Button Color="ButtonColor.Danger" data-bs-toggle="modal" @onclick="() => showDeleteQuestionComponent(question)" class="me-2">
+                            <i class="bi bi-trash"></i>
+                            </Button> 
+                            
                             <a class="btn btn-primary" role = "button" href= "/question/@question.Id" >
                                 <i class="bi bi-arrow-return-right"></i>
                             </a>
-                            <DeleteQuestion question="@question"/>
                         </div>
                     </td>
                 </tr>
@@ -49,14 +48,17 @@ else
 }
 
 @code{
-    
+    private Modal modal = default!;
     private QuestionSummary[]? questions;
     protected override void OnInitialized()
     {
         questions = Client.GetQuestions();
     }
-    private string GetDeleteModalId(QuestionSummary question)
+    private async Task showDeleteQuestionComponent(QuestionSummary question)
     {
-        return $"#{DeleteQuestion.GetModalId(question)}";
+        var parameters = new Dictionary<string, object>();
+        parameters.Add("question", question);
+        parameters.Add("modal", modal);
+        await modal.ShowAsync<DeleteQuestion>(title: $"Delete {question.Name}?", parameters: parameters);
     }
 }

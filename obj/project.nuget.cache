@@ -1,8 +1,25 @@
 {
   "version": 2,
-  "dgSpecHash": "uCVVM4Yf5Dnal5dKPiXooH7dP3mjSFBMd0EsDVWe1zK+mIjRlPGe355IM0SiOzgQxdK0PHfmU3UDz2lvWd7XvA==",
+  "dgSpecHash": "HfVkqlTXj6ZBx4OyEoXQkajgY0fQn4mbVsvVu2fbC3mPLHbrX5NWf/xwOqFubZqvOJR8C07mLU5utsHAAyzjXQ==",
   "success": true,
   "projectFilePath": "D:\\TeachingSite\\TeachingSite.Frontend\\TeachingSite.Frontend.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Beafo\\.nuget\\packages\\blazor.bootstrap\\3.0.0-preview.3\\blazor.bootstrap.3.0.0-preview.3.nupkg.sha512",
+    "C:\\Users\\Beafo\\.nuget\\packages\\blazored.fluentvalidation\\2.2.0\\blazored.fluentvalidation.2.2.0.nupkg.sha512",
+    "C:\\Users\\Beafo\\.nuget\\packages\\fluentvalidation\\11.9.1\\fluentvalidation.11.9.1.nupkg.sha512",
+    "C:\\Users\\Beafo\\.nuget\\packages\\microsoft.aspnetcore.authorization\\8.0.6\\microsoft.aspnetcore.authorization.8.0.6.nupkg.sha512",
+    "C:\\Users\\Beafo\\.nuget\\packages\\microsoft.aspnetcore.components\\8.0.6\\microsoft.aspnetcore.components.8.0.6.nupkg.sha512",
+    "C:\\Users\\Beafo\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\8.0.6\\microsoft.aspnetcore.components.analyzers.8.0.6.nupkg.sha512",
+    "C:\\Users\\Beafo\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\8.0.6\\microsoft.aspnetcore.components.forms.8.0.6.nupkg.sha512",
+    "C:\\Users\\Beafo\\.nuget\\packages\\microsoft.aspnetcore.components.web\\8.0.6\\microsoft.aspnetcore.components.web.8.0.6.nupkg.sha512",
+    "C:\\Users\\Beafo\\.nuget\\packages\\microsoft.aspnetcore.metadata\\8.0.6\\microsoft.aspnetcore.metadata.8.0.6.nupkg.sha512",
+    "C:\\Users\\Beafo\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "C:\\Users\\Beafo\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.1\\microsoft.extensions.dependencyinjection.abstractions.8.0.1.nupkg.sha512",
+    "C:\\Users\\Beafo\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.1\\microsoft.extensions.logging.abstractions.8.0.1.nupkg.sha512",
+    "C:\\Users\\Beafo\\.nuget\\packages\\microsoft.extensions.options\\8.0.2\\microsoft.extensions.options.8.0.2.nupkg.sha512",
+    "C:\\Users\\Beafo\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "C:\\Users\\Beafo\\.nuget\\packages\\microsoft.jsinterop\\8.0.6\\microsoft.jsinterop.8.0.6.nupkg.sha512",
+    "C:\\Users\\Beafo\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

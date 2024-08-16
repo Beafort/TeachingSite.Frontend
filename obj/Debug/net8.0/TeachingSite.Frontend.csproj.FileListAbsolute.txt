@@ -26,3 +26,16 @@ D:\TeachingSite\TeachingSite.Frontend\obj\Debug\net8.0\refint\TeachingSite.Front
 D:\TeachingSite\TeachingSite.Frontend\obj\Debug\net8.0\TeachingSite.Frontend.pdb
 D:\TeachingSite\TeachingSite.Frontend\obj\Debug\net8.0\TeachingSite.Frontend.genruntimeconfig.cache
 D:\TeachingSite\TeachingSite.Frontend\obj\Debug\net8.0\ref\TeachingSite.Frontend.dll
+D:\TeachingSite\TeachingSite.Frontend\obj\Debug\net8.0\TeachingSite.Frontend.sourcelink.json
+D:\TeachingSite\TeachingSite.Frontend\bin\Debug\net8.0\BlazorBootstrap.dll
+D:\TeachingSite\TeachingSite.Frontend\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
+D:\TeachingSite\TeachingSite.Frontend\bin\Debug\net8.0\Microsoft.AspNetCore.Components.dll
+D:\TeachingSite\TeachingSite.Frontend\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Forms.dll
+D:\TeachingSite\TeachingSite.Frontend\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Web.dll
+D:\TeachingSite\TeachingSite.Frontend\bin\Debug\net8.0\Microsoft.AspNetCore.Metadata.dll
+D:\TeachingSite\TeachingSite.Frontend\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\TeachingSite\TeachingSite.Frontend\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\TeachingSite\TeachingSite.Frontend\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+D:\TeachingSite\TeachingSite.Frontend\bin\Debug\net8.0\Microsoft.JSInterop.dll
+D:\TeachingSite\TeachingSite.Frontend\obj\Debug\net8.0\TeachingSite.Frontend.csproj.AssemblyReference.cache
+D:\TeachingSite\TeachingSite.Frontend\obj\Debug\net8.0\Teaching.F0CD13FD.Up2Date

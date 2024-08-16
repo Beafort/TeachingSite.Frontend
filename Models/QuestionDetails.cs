@@ -1,5 +1,8 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
+using Blazored.FluentValidation;
+using FluentValidation;
 using Microsoft.AspNetCore.Http.Timeouts;
 
 namespace TeachingSite.Frontend.Models;
@@ -16,4 +19,15 @@ public class QuestionDetails
 	public required string Answer {get; set;}
 	[MaxLength(3, ErrorMessage ="A maximum of 3 wrong answers is allowed")]
 	public List<string> WrongAnswers {get; set;} =[];
+}
+//This is unused, might be helpful later to switch to fluentValidator though
+public class QuestionValidator: AbstractValidator<QuestionDetails>
+{
+	public QuestionValidator()
+	{
+		RuleFor(q => q.Answer).NotEmpty().WithMessage("An answer is required.");
+	}
+	
+	
+	
 }

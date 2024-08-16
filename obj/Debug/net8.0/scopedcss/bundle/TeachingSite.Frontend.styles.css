@@ -1,3 +1,5 @@
+@import '_content/Blazor.Bootstrap/Blazor.Bootstrap.bundle.scp.css';
+
 /* _content/TeachingSite.Frontend/Components/Layout/MainLayout.razor.rz.scp.css */
 #blazor-error-ui[b-d4qmye3mv2] {
     background: lightyellow;
