@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bnwbUBbp4dFruLCfEX2d6lRTkonLZ77qHDHTcSfy0lfQ6EW8s2RYUY+aCautx+MXGXPflTXKfuObyVf5PoOc8w==",
+  "dgSpecHash": "HfVkqlTXj6ZBx4OyEoXQkajgY0fQn4mbVsvVu2fbC3mPLHbrX5NWf/xwOqFubZqvOJR8C07mLU5utsHAAyzjXQ==",
   "success": true,
-  "projectFilePath": "D:\\TeachingSite\\teachingsite.frontend\\TeachingSite.Frontend.csproj",
+  "projectFilePath": "D:\\TeachingSite\\TeachingSite.Frontend\\TeachingSite.Frontend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Beafo\\.nuget\\packages\\blazor.bootstrap\\3.0.0-preview.3\\blazor.bootstrap.3.0.0-preview.3.nupkg.sha512",
     "C:\\Users\\Beafo\\.nuget\\packages\\blazored.fluentvalidation\\2.2.0\\blazored.fluentvalidation.2.2.0.nupkg.sha512",
