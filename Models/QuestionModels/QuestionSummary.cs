@@ -1,6 +1,6 @@
 using System;
 
-namespace TeachingSite.Frontend.Models;
+namespace TeachingSite.Frontend.Models.QuestionModels;
 
 public class QuestionSummary
 {

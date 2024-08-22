@@ -1,0 +1,39 @@
+@page "/exam"
+@using TeachingSite.Frontend.Models.ExamModels;
+@inject ExamsClient ExamsClient
+@if(exams is null)
+{
+    <div><em>Loading...</em></div>
+}else{
+    <div>
+        <Grid TItem="ExamSummary" 
+        Class="table table-light table-striped table-bordered table-hover mt-3"
+        Data="@exams">
+        
+            <GridColumns>
+                <GridColumn TItem="ExamSummary" HeaderText="Id" PropertyName="Id">
+                    @context.Id
+                </GridColumn>
+                <GridColumn TItem="ExamSummary" HeaderText="Name" PropertyName="Name">
+                    @context.Name
+                </GridColumn>
+                <GridColumn TItem="ExamSummary" HeaderText="Subject" PropertyName="Subject">
+                    @context.Subject
+                </GridColumn>
+                <GridColumn TItem="ExamSummary" HeaderText="Questions" PropertyName="Questions">
+                    <a class="btn btn-primary" role = "button" href= "/exam/@context.Id/question" >
+                        <i class="bi bi-arrow-return-right"></i>
+                    </a>
+                </GridColumn>
+            </GridColumns>
+        </Grid>
+    </div>
+}
+
+@code{
+    List<ExamSummary>? exams;
+    protected override void OnInitialized()
+    {
+        exams = ExamsClient.GetExams().ToList();
+    }
+}    

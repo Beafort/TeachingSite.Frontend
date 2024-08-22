@@ -1,15 +1,25 @@
 using TeachingSite.Frontend.Clients;
 using TeachingSite.Frontend.Components;
+using TeachingSite.Frontend.Components.Pages;
+
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddBlazorBootstrap();
 // Add services to the container.
 builder.Services.AddRazorComponents()
 				.AddInteractiveServerComponents();
-				
-builder.Services.AddSingleton<QuestionsClient>();
+var teachingSiteApiUrl = builder.Configuration["TeachingSiteApiUrl"] ??
+	throw new Exception("TeachingSiteApiUrl is not set!");
 
-
+builder.Services.AddHttpClient<QuestionsClient>(
+	client => client.BaseAddress = new Uri(teachingSiteApiUrl));
+	
+builder.Services.AddHttpClient<ExamsClient>(
+	client => client.BaseAddress = new Uri(teachingSiteApiUrl));
+	
+builder.Services.AddHttpClient<SubjectsClient>(
+	client => client.BaseAddress = new Uri(teachingSiteApiUrl));
+		
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,0 +1,41 @@
+﻿@page "/question"
+@using TeachingSite.Frontend.Models.QuestionModels
+@using TeachingSite.Frontend.Components.Shared
+@inject NavigationManager NavigationManager
+@inject QuestionsClient Client
+@attribute [StreamRendering]
+<PageTitle>Question</PageTitle>
+<div><a role="button" class="btn btn-primary mb-3"href="/question/edit">New Question</a></div>
+<Modal @ref="modal" />
+
+<QuestionTable Questions="questions" OnEdit="EditQuestion" OnDelete="ShowDeleteQuestionComponent" OnView="ViewQuestion" />
+
+@code {
+    private Modal modal = default!;
+    private QuestionSummary[]? questions;
+
+    protected override async Task OnInitializedAsync()
+    {
+        questions = await Client.GetQuestionsAsync();
+    }
+
+    private void EditQuestion(QuestionSummary question)
+    {
+        NavigationManager.NavigateTo($"question/edit/{question.Id}");
+    }
+
+    private async Task ShowDeleteQuestionComponent(QuestionSummary question)
+    {
+        var parameters = new Dictionary<string, object>
+        {
+            { "question", question },
+            { "modal", modal }
+        };
+        await modal.ShowAsync<DeleteQuestion>(title: $"Delete {question.Name}?", parameters: parameters);
+    }
+
+    private void ViewQuestion(QuestionSummary question)
+    {
+        NavigationManager.NavigateTo($"/question/{question.Id}");
+    }
+}

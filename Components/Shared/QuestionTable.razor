@@ -1,0 +1,56 @@
+@code {
+    [Parameter]
+    public QuestionSummary[]? Questions { get; set; }
+
+    [Parameter]
+    public EventCallback<QuestionSummary> OnEdit { get; set; }
+
+    [Parameter]
+    public EventCallback<QuestionSummary> OnDelete { get; set; }
+
+    [Parameter]
+    public EventCallback<QuestionSummary> OnView { get; set; }
+}
+
+@if(Questions is null){
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-light table-striped table-bordered table-hover mt-3">
+        <thead class= "table-primary">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Prompt</th>
+            <th>Subject</th>
+            <th>Answer</th>
+            <th>Wrong Answers</th>
+            <th></th>
+        </thead>
+        <tbody>
+            @foreach (var question in Questions){
+                <tr>
+                    <td>@question.Id</td>
+                    <td>@question.Name</td>
+                    <td>@question.Prompt</td>
+                    <td>@question.Subject</td>
+                    <td>@question.Answer</td>
+                    <td>@String.Join(", ", question.WrongAnswers ?? Enumerable.Empty<string>())</td>
+                    <td>
+                        <div class="d-flex">
+                            <a class="btn btn-primary me-2" role = "button" @onclick="() => OnEdit.InvokeAsync(question)">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <Button Color="ButtonColor.Danger" data-bs-toggle="modal" @onclick="() => OnDelete.InvokeAsync(question)" class="me-2">
+                            <i class="bi bi-trash"></i>
+                            </Button> 
+                            <a class="btn btn-primary" role = "button" @onclick="() => OnView.InvokeAsync(question)">
+                                <i class="bi bi-arrow-return-right"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

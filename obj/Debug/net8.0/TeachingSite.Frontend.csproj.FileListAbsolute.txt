@@ -39,3 +39,5 @@ D:\TeachingSite\TeachingSite.Frontend\bin\Debug\net8.0\Microsoft.Extensions.Opti
 D:\TeachingSite\TeachingSite.Frontend\bin\Debug\net8.0\Microsoft.JSInterop.dll
 D:\TeachingSite\TeachingSite.Frontend\obj\Debug\net8.0\TeachingSite.Frontend.csproj.AssemblyReference.cache
 D:\TeachingSite\TeachingSite.Frontend\obj\Debug\net8.0\Teaching.F0CD13FD.Up2Date
+D:\TeachingSite\TeachingSite.Frontend\bin\Debug\net8.0\Blazored.FluentValidation.dll
+D:\TeachingSite\TeachingSite.Frontend\bin\Debug\net8.0\FluentValidation.dll

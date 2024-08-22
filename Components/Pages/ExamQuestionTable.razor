@@ -1,0 +1,47 @@
+@page "/exam/{examId:int}/question"
+@using TeachingSite.Frontend.Models.QuestionModels
+@using TeachingSite.Frontend.Components.Shared
+@inject NavigationManager NavigationManager
+@inject QuestionsClient QuestionsClient
+@inject ExamsClient ExamsClient
+<PageTitle>Exam Questions</PageTitle>
+
+<Modal @ref="modal" />
+
+<QuestionTable Questions="questions" OnEdit="EditQuestion" OnDelete="ShowDeleteQuestionComponent" OnView="ViewQuestion" />
+
+@code {
+    [Parameter]
+    public int? examId {get; set;}
+    private Modal modal = default!;
+    private QuestionSummary[]? questions;
+    private ExamSummary[]? exam;
+
+    protected override void OnInitialized()
+    {
+        if(examId is not null)
+        {
+            exam = ExamsClient.GetExams();
+        }
+    }
+
+    private void EditQuestion(QuestionSummary question)
+    {
+        NavigationManager.NavigateTo($"question/edit/{question.Id}");
+    }
+
+    private async Task ShowDeleteQuestionComponent(QuestionSummary question)
+    {
+        var parameters = new Dictionary<string, object>
+        {
+            { "question", question },
+            { "modal", modal }
+        };
+        await modal.ShowAsync<DeleteQuestion>(title: $"Delete {question.Name}?", parameters: parameters);
+    }
+
+    private void ViewQuestion(QuestionSummary question)
+    {
+        NavigationManager.NavigateTo($"/question/{question.Id}");
+    }
+}

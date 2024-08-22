@@ -1,7 +1,9 @@
-﻿@page "/edit"
-@page "/edit/{id:int}"
+﻿@page "/question/edit"
+@page "/question/edit/{id:int}"
+@using Blazored.FluentValidation
 @inject NavigationManager NavigationManager
 @inject QuestionsClient QuestionsClient
+@inject SubjectsClient SubjectsClient
 @rendermode InteractiveServer
 <h3>@title</h3>
 @if(subjects is null || question is null)
@@ -12,40 +14,40 @@
     <div class="row">
         <div class="col-md-4">
             <EditForm Model="@question" FormName="editQuestion" OnValidSubmit="HandleSubmit">
-            <DataAnnotationsValidator/>
-            <div class="mb-3">
-                <label for="name" class="form-label">Name:</label>
-                <InputText id = "name" @bind-Value="question.Name" class="form-control"></InputText>
-                <ValidationMessage For="() => question.Name"/>
-            </div>
-            <div class="mb-3">
-                <label for="prompt" class="form-label">Prompt</label>
-                <InputText id="prompt" @bind-Value ="question.Prompt" class="form-control"></InputText>
-            </div>
-            <div class="mb-3">
-                <label for="subjectId" class="form-label">Select a subject</label>
-                <InputSelect id="subjectId" @bind-Value ="question.SubjectId" class ="form-select">
-                    <option value="">Select a subject</option>
-                    @foreach( var subject in subjects)
-                    {
-                        <option value="@subject.Id">@subject.Name</option>
-                    }
-                </InputSelect>
-                <ValidationMessage For="() => question.SubjectId"/>
-            </div>
-            <div class="mb-3">
-                <label for="answer" class="form-label">Answer</label>
-                <InputText id="answer" @bind-Value ="question.Answer" class="form-control"></InputText>
-                <ValidationMessage For="() => question.Answer"/>
-            </div>
-            <div class ="mb-3">
-                <label for="question.WrongAnswers" class="form-label">Wrong Answers</label>
-                <WrongAnswersSubform id="question.WrongAnswers"  @bind-Value="question.WrongAnswers" ValidationFor="@(()=> question.WrongAnswers)"></WrongAnswersSubform>
-            </div>
-            <div>
-                <button type="submit" class="btn btn-primary mb-3">Submit</button>
-                <a type="button" class="btn btn-warning mb-3" href ="/">Cancel</a>
-            </div>
+                <FluentValidationValidator/>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name:</label>
+                    <InputText id = "name" @bind-Value="question.Name" class="form-control"></InputText>
+                    <ValidationMessage For="() => question.Name"/>
+                </div>
+                <div class="mb-3">
+                    <label for="prompt" class="form-label">Prompt</label>
+                    <InputText id="prompt" @bind-Value ="question.Prompt" class="form-control"></InputText>
+                </div>
+                <div class="mb-3">
+                    <label for="subjectId" class="form-label">Select a subject</label>
+                    <InputSelect id="subjectId" @bind-Value ="question.SubjectId" class ="form-select">
+                        <option value="">Select a subject</option>
+                        @foreach( var subject in subjects)
+                        {
+                            <option value="@subject.Id">@subject.Name</option>
+                        }
+                    </InputSelect>
+                    <ValidationMessage For="() => question.SubjectId"/>
+                </div>
+                <div class="mb-3">
+                    <label for="answer" class="form-label">Answer</label>
+                    <InputText id="answer" @bind-Value ="question.Answer" class="form-control"></InputText>
+                    <ValidationMessage For="() => question.Answer"/>
+                </div>
+                <div class ="mb-3">
+                    <label for="question.WrongAnswers" class="form-label">Wrong Answers</label>
+                    <WrongAnswersSubform id="question.WrongAnswers"  @bind-Value="question.WrongAnswers" ValidationFor="@(()=> question.WrongAnswers)"></WrongAnswersSubform>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary mb-3">Submit</button>
+                    <a type="button" class="btn btn-warning mb-3" href ="/question">Cancel</a>
+                </div>
             
             </EditForm>
         </div>
@@ -60,10 +62,9 @@
     public int? Id {get; set;}
     [SupplyParameterFromForm]
     private QuestionDetails? question {get; set;}
-    private SubjectsClient subjectsClient = new();
     private Subject[]? subjects;
     private string title = string.Empty;
-    protected override void OnParametersSet()
+    protected override async Task OnParametersSetAsync()
     {
         if(question is not null)
         {
@@ -71,7 +72,7 @@
         }
         if(Id is not null)
         {
-            question = QuestionsClient.GetQuestion(Id.Value);
+            question = await QuestionsClient.GetQuestionAsync(Id.Value);
             title = $"Editing ({question.Name}) with id of {question.Id}";
         }
         else
@@ -84,22 +85,22 @@
             title = "New Question";
         }
     }
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        subjects = subjectsClient.GetSubjects();
+        subjects = await SubjectsClient.GetSubjectsAsync();
     }
-    private void HandleSubmit()
+    private async Task HandleSubmit()
     {
         ArgumentNullException.ThrowIfNull(question);
         if(Id is null){
-            QuestionsClient.AddQuestion(question);
+            await QuestionsClient.AddQuestionAsync(question);
         }
         else
         {
             question.Id = Id.Value;
-            QuestionsClient.UpdateQuestion(question);
+            await QuestionsClient.UpdateQuestionAsync(question);
         }
         
-        NavigationManager.NavigateTo("/");
+        NavigationManager.NavigateTo("/question");
     }
 }

@@ -1,11 +1,11 @@
 {
   "Files": [
     {
-      "Id": "D:\\TeachingSite\\TeachingSite.Frontend\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TeachingSite.Frontend.bundle.scp.css",
+      "Id": "D:\\TeachingSite\\teachingsite.frontend\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TeachingSite.Frontend.bundle.scp.css",
       "PackagePath": "staticwebassets\\TeachingSite.Frontend.bundle.scp.css"
     },
     {
-      "Id": "D:\\TeachingSite\\TeachingSite.Frontend\\wwwroot\\app.css",
+      "Id": "D:\\TeachingSite\\teachingsite.frontend\\wwwroot\\app.css",
       "PackagePath": "staticwebassets\\app.css"
     },
     {

@@ -1,64 +1,7 @@
-﻿@page "/"
-@inject QuestionsClient Client
-<PageTitle>Home</PageTitle>
+@page "/"
+<div>
+    <Button Color="ButtonColor.Primary"> Question </Button>
+    <Button Color="ButtonColor.Primary"> Exam </Button>
+</div>
 
-@if(questions is null){
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table table-light table-striped table-bordered table-hover mt-3">
-        <thead class= "table-primary">
-            <th>Id</th>
-            <th>Name</th>
-            <th>Prompt</th>
-            <th>Subject</th>
-            <th>Answer</th>
-            <th>Wrong Answers</th>
-            <th></th>
-        </thead>
-        <tbody>
-            @foreach (var question in questions){
-                <tr>
-                    <td>@question.Id</td>
-                    <td>@question.Name</td>
-                    <td>@question.Prompt</td>
-                    <td>@question.Subject</td>
-                    <td>@question.Answer</td>
-                    <td>@String.Join(", ", question.WrongAnswers ?? Enumerable.Empty<string>())</td>
-                    <td>
-                        <div class="d-flex">
-                            <a class="btn btn-primary me-2" role = "button" href= "/edit/@question.Id" >
-                                <i class="bi bi-pencil-square"></i>
-                            </a>
-                            <Modal @ref="modal"/>
-                            <Button Color="ButtonColor.Danger" data-bs-toggle="modal" @onclick="() => showDeleteQuestionComponent(question)" class="me-2">
-                            <i class="bi bi-trash"></i>
-                            </Button> 
-                            
-                            <a class="btn btn-primary" role = "button" href= "/question/@question.Id" >
-                                <i class="bi bi-arrow-return-right"></i>
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
 
-@code{
-    private Modal modal = default!;
-    private QuestionSummary[]? questions;
-    protected override void OnInitialized()
-    {
-        questions = Client.GetQuestions();
-    }
-    private async Task showDeleteQuestionComponent(QuestionSummary question)
-    {
-        var parameters = new Dictionary<string, object>();
-        parameters.Add("question", question);
-        parameters.Add("modal", modal);
-        await modal.ShowAsync<DeleteQuestion>(title: $"Delete {question.Name}?", parameters: parameters);
-    }
-}

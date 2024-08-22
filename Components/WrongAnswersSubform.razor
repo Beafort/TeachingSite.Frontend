@@ -45,13 +45,7 @@
     protected override bool TryParseValueFromString(string? value, out List<string> result, out string validationErrorMessage)
     {
         // Parsing is not necessary here as we're dealing with a list of strings
-        if(CurrentValue.Count >= 3)
-        {
-            result = CurrentValue;
-            validationErrorMessage = "Maximum number of wrong numbers is 3";
-            return false;
-        }
-        result = CurrentValue;
+        result = CurrentValue!;
         validationErrorMessage = string.Empty;
         return true;
     }

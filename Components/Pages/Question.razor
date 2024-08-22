@@ -18,12 +18,17 @@ else
                 
                 @foreach(string answer in answers)
                 {
-                    <button class="btn btn-outline-dark" data-bs-toggle="button" type="button">@answer</button>
+                    <Button Color="ButtonColor.Dark" Outline = "true" Active="@options[answer]" @onclick="() => chooseAnswer(answer)"> <div class="text-start">@answer</div> </Button>
                 }
             }
         </div>
         
     </div>
+    <div class="mx-auto p-2" style="width: 66%;">
+        <Button Color="ButtonColor.Info" @onclick="submitAmswer" >Submit</Button>
+        <div><p><em style="color: red" >Current Answer = @userAnswer</em></p></div>
+    </div>
+    
 }
 
 @code {
@@ -31,7 +36,41 @@ else
     public int? id {get; set;}
     private QuestionDetails? question;
     private List<string>? answers;
-    private List<string> Shuffle(List<string> list)
+    private string? userAnswer;
+    private Dictionary<string,bool> options = new Dictionary<string, bool>();
+    private void chooseAnswer(string answer)
+    {
+        foreach (var key in options.Keys.ToList())
+        {
+            options[key] = false;
+        }
+        if(userAnswer is not null)
+        {
+            if(userAnswer == answer)
+            {
+                options[answer] = false;
+                userAnswer = null;
+            }else{
+                options[answer] = true;
+                userAnswer = answer;
+            }
+        }else{
+            options[answer] = true;
+            userAnswer = answer;
+        }
+        
+        
+    }
+
+    private void submitAmswer()
+    {
+        if(userAnswer is null)
+        {
+
+            return;
+        }
+    }
+    private List<string> shuffle(List<string> list)
     {
         Random r = new Random();
         List<string> newList = new List<string>(list);
@@ -45,11 +84,11 @@ else
         }
         return newList;
     }
-    protected override void OnParametersSet()
+    protected override async Task OnParametersSetAsync()
     {
         if(id is not null)
         {
-            question = QuestionsClient.GetQuestion(id.Value);
+            question = await QuestionsClient.GetQuestionAsync(id.Value);
 
         }
         if(question is not null)
@@ -58,15 +97,16 @@ else
             {
                 answers = new List<string>{question.Answer};
                 answers.AddRange(question.WrongAnswers ?? new List<string>());
-                answers = Shuffle(answers);
+                answers = shuffle(answers);
+                foreach(var answer in answers)
+                {
+                    options.TryAdd(answer, false);
+                }
             }
             
         }
         
     }
-    
-
-   
 }   
     
     

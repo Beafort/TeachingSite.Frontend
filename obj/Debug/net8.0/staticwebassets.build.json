@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Ur0u7XkZqz6fs9vvRlvOSECw7BWRCNrxtZhMoYJmlhQ=",
+  "Hash": "XaY90KFidD8mIXEdRfznOfiJkGGq5ugIgJPBrQBaCQk=",
   "Source": "TeachingSite.Frontend",
   "BasePath": "_content/TeachingSite.Frontend",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "TeachingSite.Frontend\\wwwroot",
       "Source": "TeachingSite.Frontend",
-      "ContentRoot": "D:\\TeachingSite\\TeachingSite.Frontend\\wwwroot\\",
+      "ContentRoot": "D:\\TeachingSite\\teachingsite.frontend\\wwwroot\\",
       "BasePath": "_content/TeachingSite.Frontend",
       "Pattern": "**"
     }
@@ -169,10 +169,10 @@
       "OriginalItemSpec": "C:\\Users\\Beafo\\.nuget\\packages\\blazor.bootstrap\\3.0.0-preview.3\\staticwebassets\\pdfjs-4.0.379.worker.min.js"
     },
     {
-      "Identity": "D:\\TeachingSite\\TeachingSite.Frontend\\obj\\Debug\\net8.0\\scopedcss\\bundle\\TeachingSite.Frontend.styles.css",
+      "Identity": "D:\\TeachingSite\\teachingsite.frontend\\obj\\Debug\\net8.0\\scopedcss\\bundle\\TeachingSite.Frontend.styles.css",
       "SourceId": "TeachingSite.Frontend",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\TeachingSite\\TeachingSite.Frontend\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "D:\\TeachingSite\\teachingsite.frontend\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/TeachingSite.Frontend",
       "RelativePath": "TeachingSite.Frontend.styles.css",
       "AssetKind": "All",
@@ -185,13 +185,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\TeachingSite\\TeachingSite.Frontend\\obj\\Debug\\net8.0\\scopedcss\\bundle\\TeachingSite.Frontend.styles.css"
+      "OriginalItemSpec": "D:\\TeachingSite\\teachingsite.frontend\\obj\\Debug\\net8.0\\scopedcss\\bundle\\TeachingSite.Frontend.styles.css"
     },
     {
-      "Identity": "D:\\TeachingSite\\TeachingSite.Frontend\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TeachingSite.Frontend.bundle.scp.css",
+      "Identity": "D:\\TeachingSite\\teachingsite.frontend\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TeachingSite.Frontend.bundle.scp.css",
       "SourceId": "TeachingSite.Frontend",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\TeachingSite\\TeachingSite.Frontend\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "D:\\TeachingSite\\teachingsite.frontend\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/TeachingSite.Frontend",
       "RelativePath": "TeachingSite.Frontend.bundle.scp.css",
       "AssetKind": "All",
@@ -204,13 +204,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\TeachingSite\\TeachingSite.Frontend\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TeachingSite.Frontend.bundle.scp.css"
+      "OriginalItemSpec": "D:\\TeachingSite\\teachingsite.frontend\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TeachingSite.Frontend.bundle.scp.css"
     },
     {
-      "Identity": "D:\\TeachingSite\\TeachingSite.Frontend\\wwwroot\\app.css",
+      "Identity": "D:\\TeachingSite\\teachingsite.frontend\\wwwroot\\app.css",
       "SourceId": "TeachingSite.Frontend",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\TeachingSite\\TeachingSite.Frontend\\wwwroot\\",
+      "ContentRoot": "D:\\TeachingSite\\teachingsite.frontend\\wwwroot\\",
       "BasePath": "_content/TeachingSite.Frontend",
       "RelativePath": "app.css",
       "AssetKind": "All",

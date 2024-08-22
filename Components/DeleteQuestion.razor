@@ -1,7 +1,7 @@
 ﻿@inject QuestionsClient QuestionsClient
 @inject NavigationManager NavigationManager
 <Button Color="ButtonColor.Secondary" @onclick="OnHideModalClick">Cancel</Button>
-<Button Color="ButtonColor.Primary" @onclick="Delete">Delete</Button>
+<Button Color="ButtonColor.Primary" @onclick="DeleteAsync">Delete</Button>
     
                                  
                      
@@ -13,11 +13,11 @@
     private string title = string.Empty;
     [Parameter] public QuestionSummary? question {get; set;}
     [Parameter] public Modal? modal {get; set;}
-    private void Delete()
+    private async Task DeleteAsync()
     {
       ArgumentNullException.ThrowIfNull(question);
-      QuestionsClient.DeleteQuestion(question.Id);
-      modal!.HideAsync();
+      await QuestionsClient.DeleteQuestionAsync(question.Id);
+      await modal!.HideAsync();
       NavigationManager.Refresh(true);
     }
     private async Task OnShowModalClick()

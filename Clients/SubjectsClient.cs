@@ -3,22 +3,8 @@ using TeachingSite.Frontend.Models;
 
 namespace TeachingSite.Frontend.Clients;
 
-public class SubjectsClient
+public class SubjectsClient(HttpClient httpClient)
 {
-	private readonly Subject[] subjects =
-	[
-		new()
-		{
-			Id = 1,
-			Name = "Math"
-		},
-		new()
-		{
-			Id = 2,
-			Name = "Geography"
-		}
-	];
-	
-	
-	public Subject[] GetSubjects() => subjects;
+	public async Task<Subject[]> GetSubjectsAsync() 
+		=> await httpClient.GetFromJsonAsync<Subject[]>("/subjects") ?? [];
 }
